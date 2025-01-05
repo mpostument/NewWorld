@@ -15,5 +15,14 @@ public class Controller : BaseController
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         movable.MoveTo(new Vector2(x, y));
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            movable.SetRun(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            movable.SetRun(false);
+        }
     }
 }

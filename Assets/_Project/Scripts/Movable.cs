@@ -25,7 +25,8 @@ public class Movable : BaseMovable
     }
 
     void Move()
-    {
+    {   
+        float speed = isRunning ? runSpeed : walkSpeed;
         _rb.linearVelocity = direction * (speed * Time.fixedDeltaTime * 100);
     }
 
