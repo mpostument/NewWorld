@@ -23,7 +23,6 @@ public class EnemyAiFire : BaseController
     {
         while (Vector2.Distance(transform.position, target) > _threshold)
         {
-            Debug.Log(target);
             Vector2 direction = (target - (Vector2)transform.position).normalized;
             movable.MoveTo(direction);
             yield return new WaitForFixedUpdate();
@@ -38,7 +37,6 @@ public class EnemyAiFire : BaseController
             yield return MoveToPointCoroutine(_pointB);
             yield return new WaitForSeconds(1f);
             yield return MoveToPointCoroutine(_pointA);
-            Debug.Log(_pointA);
             yield return new WaitForSeconds(1f);
         }
     }
