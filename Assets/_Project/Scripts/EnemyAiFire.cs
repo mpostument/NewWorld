@@ -11,7 +11,7 @@ public class EnemyAiFire : BaseController
     {
         _pointA = transform.position;
         _pointB = new Vector2(transform.position.x + 5, transform.position.y + 1);
-        StartCoroutine(MoveToAndBack());
+        StartCoroutine(MoveToAndBackCoroutine());
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class EnemyAiFire : BaseController
     {
     }
     
-    IEnumerator MoveToPoint(Vector2 target)
+    IEnumerator MoveToPointCoroutine(Vector2 target)
     {
         while (Vector2.Distance(transform.position, target) > _threshold)
         {
@@ -31,13 +31,13 @@ public class EnemyAiFire : BaseController
         movable.MoveTo(Vector2.zero);
     }
     
-    IEnumerator MoveToAndBack()
+    IEnumerator MoveToAndBackCoroutine()
     {
         while (true)
         {
-            yield return MoveToPoint(_pointB);
+            yield return MoveToPointCoroutine(_pointB);
             yield return new WaitForSeconds(1f);
-            yield return MoveToPoint(_pointA);
+            yield return MoveToPointCoroutine(_pointA);
             Debug.Log(_pointA);
             yield return new WaitForSeconds(1f);
         }
